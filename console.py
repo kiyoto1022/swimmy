@@ -48,11 +48,11 @@ class Console(Cmd):
     def help_server_stop(self):
         print "Description: Stop the server\n\tUsage: server_stop\n"
 
-    def do_botnet(self, arg):
+    def do_sessions(self, arg):
         self.c2server.display()
 
-    def help_botnet(self):
-        print "Description: Display a list of connected bots\n\tUsage: botnet\n"
+    def help_sessions(self):
+        print "Description: Display a list of connected bots\n\tUsage: sessions\n"
 
     def do_EOF(self, arg):
         return True
