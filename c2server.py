@@ -39,7 +39,15 @@ class C2Server:
             print 'Botnet Size: 0'
             return
 
-        print 'Botnet Size: {}'.format(len(self.botnet))
+        # header
+        print "\nActive sessions"
+        print "===============\n"
+        print "Id  Session"
+        print "{} {}".format('-' * 3, '-' * 50)
+
+        for i, bot in enumerate(self.botnet):
+            print "{:3} {}".format(i+1, bot)
+        print "\nBotnet Size: {0}\n".format(len(self.botnet))
 
     def __alive_monitoring(self):
         while self.__active:
