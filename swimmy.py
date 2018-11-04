@@ -8,5 +8,9 @@ class Swimmy(Console):
         self.cmdloop()
 
 
-if __name__ == '__main__':
+def main():
     Swimmy().start()
+
+
+if __name__ == '__main__':
+    main()
