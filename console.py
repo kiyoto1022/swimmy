@@ -26,7 +26,7 @@ class Console(Cmd):
         self.c2server.ip = args[0]
 
     def help_setip(self):
-        print "Description: Assign the IP to host the server\n\tUsage: setip [IP]\n"
+        print("Description: Assign the IP to host the server\n\tUsage: setip [IP]\n")
 
     def do_setport(self, arg):
         args = arg.split()
@@ -34,25 +34,25 @@ class Console(Cmd):
         self.c2server.port = eval(args[0])
 
     def help_setport(self):
-        print "Description: Assign the port to host the server\n\tUsage: setport [PORT]\n"
+        print("Description: Assign the port to host the server\n\tUsage: setport [PORT]\n")
 
     def do_server_start(self, arg):
         self.c2server.start()
 
     def help_server_start(self):
-        print "Description: Start the server\n\tUsage: server_start\n"
+        print("Description: Start the server\n\tUsage: server_start\n")
 
     def do_server_stop(self, arg):
         pass
 
     def help_server_stop(self):
-        print "Description: Stop the server\n\tUsage: server_stop\n"
+        print("Description: Stop the server\n\tUsage: server_stop\n")
 
     def do_sessions(self, arg):
         self.c2server.display()
 
     def help_sessions(self):
-        print "Description: Display a list of connected bots\n\tUsage: sessions\n"
+        print("Description: Display a list of connected bots\n\tUsage: sessions\n")
 
     def do_EOF(self, arg):
         return True
@@ -62,6 +62,6 @@ class Console(Cmd):
 
     def __check_args(self, args, num):
         if len(args) != num:
-            print '[-] Error: This Function takes {} arguments ({} given)'.format(num, len(args))
+            print('[-] Error: This Function takes {} arguments ({} given)'.format(num, len(args)))
             return
         return True
